@@ -124,39 +124,35 @@
 
         startBtn.onclick = async () => {
             const url = urlInput.value.trim();
-            if(!url) return alert('الرجاء وضع رابط أولاً');
+            if(!url) return;
 
-            startBtn.innerText = 'جاري التحليل...';
+            startBtn.innerText = '...لحظة واحدة';
             startBtn.disabled = true;
 
             try {
-                // طلب البيانات من السيرفر الخاص بك
                 const res = await fetch(`/api/download?url=${encodeURIComponent(url)}`);
                 const json = await res.json();
 
+                // تيك توك يرسل كود 0 عند النجاح
                 if(json && json.code === 0) {
                     const data = json.data;
-                    
-                    // تحديث الصورة والعنوان
                     document.getElementById('vCover').src = data.cover;
-                    document.getElementById('vTitle').innerText = data.title || "فيديو جاهز للتحميل";
+                    document.getElementById('vTitle').innerText = data.title || "جاهز للتحميل";
                     
-                    // معالجة رابط الفيديو لضمان عمله
-                    let vLink = data.hdplay || data.play || data.wmplay;
-                    const cleanUrl = vLink.startsWith('http') ? vLink : `https://www.tikwm.com${vLink}`;
+                    const vLink = data.hdplay || data.play;
+                    const finalUrl = vLink.startsWith('http') ? vLink : `https://www.tikwm.com${vLink}`;
                     
                     document.getElementById('finalDl').onclick = (e) => {
                         e.preventDefault();
-                        window.open(cleanUrl, '_blank');
+                        window.open(finalUrl, '_blank');
                     };
                     
                     resultDiv.style.display = 'block';
-                    resultDiv.scrollIntoView({ behavior: 'smooth' });
                 } else {
-                    alert('عذراً، هذا الرابط محمي أو غير مدعوم حالياً. تأكد أن الحساب عام.');
+                    alert('عذراً، الرابط غير مدعوم أو خاص.');
                 }
             } catch (e) {
-                alert('خطأ في الاتصال بالسيرفر، تأكد من تحديث ملف download.js أيضاً.');
+                alert('خطأ في السيرفر.');
             } finally {
                 startBtn.innerText = 'تحميل';
                 startBtn.disabled = false;
@@ -165,4 +161,5 @@
     </script>
 </body>
 </html>
+
 
