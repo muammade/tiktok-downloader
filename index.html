@@ -124,21 +124,25 @@
 
         startBtn.onclick = async () => {
             const url = urlInput.value.trim();
-            if(!url) return;
+            if(!url) return alert('الرجاء وضع رابط أولاً');
 
-            startBtn.innerText = '...جاري القنص';
+            startBtn.innerText = 'جاري التحليل...';
             startBtn.disabled = true;
 
             try {
+                // طلب البيانات من السيرفر الخاص بك
                 const res = await fetch(`/api/download?url=${encodeURIComponent(url)}`);
                 const json = await res.json();
 
-                if(json.code === 0) {
+                if(json && json.code === 0) {
                     const data = json.data;
+                    
+                    // تحديث الصورة والعنوان
                     document.getElementById('vCover').src = data.cover;
                     document.getElementById('vTitle').innerText = data.title || "فيديو جاهز للتحميل";
                     
-                    const vLink = data.hdplay || data.play;
+                    // معالجة رابط الفيديو لضمان عمله
+                    let vLink = data.hdplay || data.play || data.wmplay;
                     const cleanUrl = vLink.startsWith('http') ? vLink : `https://www.tikwm.com${vLink}`;
                     
                     document.getElementById('finalDl').onclick = (e) => {
@@ -149,10 +153,10 @@
                     resultDiv.style.display = 'block';
                     resultDiv.scrollIntoView({ behavior: 'smooth' });
                 } else {
-                    alert('عذراً، هذا الرابط محمي أو غير مدعوم حالياً.');
+                    alert('عذراً، هذا الرابط محمي أو غير مدعوم حالياً. تأكد أن الحساب عام.');
                 }
             } catch (e) {
-                alert('خطأ في الاتصال بالسيرفر.');
+                alert('خطأ في الاتصال بالسيرفر، تأكد من تحديث ملف download.js أيضاً.');
             } finally {
                 startBtn.innerText = 'تحميل';
                 startBtn.disabled = false;
@@ -161,3 +165,4 @@
     </script>
 </body>
 </html>
+
