@@ -338,7 +338,7 @@
                     videoDesc.innerText = videoData.title || 'No description';
 
                     // dlVideoBtn.href = videoData.play; // Removed in favor of onclick below
-                    dlVideoBtn.onclick = () => { window.location.href = videoData.play; };
+                    dlVideoBtn.onclick = () => { window.location.href = 'https://www.tikwm.com' + videoData.play; };
                     dlMusicBtn.href = videoData.music;
 
                     resultArea.style.display = 'block';
@@ -362,4 +362,5 @@
 </body>
 
 </html>
+
 
