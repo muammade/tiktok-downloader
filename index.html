@@ -4,170 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
-    <title>VideoSave Pro | محمل الفيديوهات الذكي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>VideoSave Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #FE2C55;
-            --secondary: #25F4EE;
-            --bg: #0f1013;
-            --card-bg: #1c1e22;
-        }
+        :root { --primary: #FE2C55; --secondary: #25F4EE; --bg: #0f1013; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
-        
-        body {
-            background-color: var(--bg);
-            color: #ffffff;
-            line-height: 1.6;
-        }
-
-        /* Header التصميم العصري */
-        header {
-            width: 100%;
-            padding: 20px 5%;
-            background: rgba(28, 30, 34, 0.8);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: 1px; }
-        .logo span { color: var(--primary); }
-
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 20px;
-            min-height: 80vh;
-        }
-
-        .hero-section { text-align: center; margin-bottom: 40px; }
-        .hero-section h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        .hero-section p { color: #888; font-size: 1.1rem; }
-
-        .download-card {
-            width: 100%;
-            max-width: 600px;
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .input-wrapper {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        input {
-            flex: 1;
-            padding: 15px 20px;
-            border-radius: 12px;
-            border: 2px solid #2d3035;
-            background: #0f1013;
-            color: white;
-            font-size: 1rem;
-            outline: none;
-            transition: 0.3s;
-        }
-        input:focus { border-color: var(--secondary); }
-
-        .btn-download {
-            padding: 15px 30px;
-            border-radius: 12px;
-            border: none;
-            background: var(--primary);
-            color: white;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-            white-space: nowrap;
-        }
-        .btn-download:hover { transform: translateY(-2px); opacity: 0.9; }
-
-        /* منطقة النتائج */
-        #resultArea {
-            display: none;
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            text-align: center;
-        }
-        #vCover { width: 100%; max-height: 350px; border-radius: 15px; object-fit: contain; margin-bottom: 20px; border: 1px solid #333; }
-        .final-link {
-            display: inline-block;
-            width: 100%;
-            padding: 15px;
-            background: var(--secondary);
-            color: #000;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 12px;
-            margin-top: 10px;
-        }
-
-        /* الإعلانات */
-        .ad-container {
-            width: 100%;
-            max-width: 728px;
-            margin: 20px auto;
-            min-height: 90px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        footer { padding: 40px; text-align: center; color: #555; font-size: 0.9rem; }
+        body { background: var(--bg); color: white; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        header { width: 100%; padding: 20px; background: #1c1e22; text-align: center; border-bottom: 2px solid var(--primary); font-weight: 900; font-size: 1.5rem; }
+        .container { width: 95%; max-width: 600px; background: #1c1e22; margin-top: 30px; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; }
+        .input-group { display: flex; gap: 10px; margin: 20px 0; }
+        input { flex: 1; padding: 15px; border-radius: 10px; border: 1px solid #333; background: #000; color: white; outline: none; }
+        button { padding: 15px 25px; border-radius: 10px; border: none; background: var(--primary); color: white; font-weight: bold; cursor: pointer; }
+        #resultArea { display: none; margin-top: 25px; padding-top: 25px; border-top: 1px solid #333; }
+        #vCover { width: 100%; border-radius: 15px; border: 2px solid var(--secondary); margin-bottom: 15px; }
+        .dl-link { display: block; width: 100%; padding: 15px; background: var(--secondary); color: #000; text-decoration: none; font-weight: bold; border-radius: 10px; }
+        .ad-box { width: 100%; min-height: 100px; background: rgba(255,255,255,0.02); margin: 20px 0; border-radius: 10px; display: flex; justify-content: center; align-items: center; overflow: hidden; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">Video<span>Save</span></div>
-        <div style="font-size: 0.8rem; color: var(--secondary);">النسخة الاحترافية</div>
-    </header>
+    <header>VIDEOSAVE <span>PRO</span></header>
 
-    <div class="main-content">
-        <div class="ad-container">
-            <script async="async" data-cfasync="false" src="https://pl28334678.effectivegatecpm.com/f54e9c6f51b6bf561ffbceea1f602cc5/invoke.js"></script>
-            <div id="container-f54e9c6f51b6bf561ffbceea1f602cc5"></div>
-        </div>
-
-        <div class="hero-section">
-            <h1>حمل فيديوهاتك المفضلة</h1>
-            <p>بأعلى جودة ممكنة وبدون علامة مائية</p>
-        </div>
-
-        <div class="download-card">
-            <div class="input-wrapper">
-                <input type="text" id="urlInput" placeholder="ضع رابط الفيديو هنا...">
-                <button class="btn-download" id="fetchBtn">تحميل</button>
-            </div>
-
-            <div id="resultArea">
-                <img id="vCover" src="" alt="Video Preview">
-                <h3 id="vTitle" style="margin-bottom: 15px;"></h3>
-                <a href="#" id="dlLink" class="final-link">حفظ الفيديو إلى الجهاز</a>
-            </div>
-        </div>
-
-        <div class="ad-container" style="margin-top: 40px;">
-            <div id="container-f54e9c6f51b6bf561ffbceea1f602cc5-2"></div>
-            </div>
+    <div class="ad-box">
+        <script async="async" data-cfasync="false" src="https://pl28334678.effectivegatecpm.com/f54e9c6f51b6bf561ffbceea1f602cc5/invoke.js"></script>
+        <div id="container-f54e9c6f51b6bf561ffbceea1f602cc5"></div>
     </div>
 
-    <footer>
-        &copy; 2025 VideoSave Pro - جميع الحقوق محفوظة
-    </footer>
+    <div class="container">
+        <h2>أسرع محمل فيديوهات</h2>
+        <div class="input-group">
+            <input type="text" id="urlInput" placeholder="ضع الرابط هنا...">
+            <button id="fetchBtn">تحميل</button>
+        </div>
+
+        <div id="resultArea">
+            <img id="vCover" src="" alt="Video Preview">
+            <h3 id="vTitle" style="margin-bottom: 15px;"></h3>
+            <a href="#" id="dlBtn" class="dl-link">حفظ الفيديو الآن</a>
+        </div>
+    </div>
+
+    <div class="ad-box" style="margin-top: 40px;">
+        <div id="container-f54e9c6f51b6bf561ffbceea1f602cc5-2"></div>
+    </div>
 
     <script>
         const fetchBtn = document.getElementById('fetchBtn');
@@ -176,11 +55,9 @@
 
         fetchBtn.onclick = async () => {
             const url = urlInput.value.trim();
-            if (!url) return alert('يرجى إدخال الرابط');
+            if (!url) return alert('أدخل الرابط!');
 
             fetchBtn.innerText = 'جاري المعالجة...';
-            fetchBtn.disabled = true;
-
             try {
                 const response = await fetch(`/api/download?url=${encodeURIComponent(url)}`);
                 const result = await response.json();
@@ -188,24 +65,25 @@
                 if (result.code === 0) {
                     const data = result.data;
                     document.getElementById('vCover').src = data.cover;
-                    document.getElementById('vTitle').innerText = data.title || "فيديو جاهز للتحميل";
+                    document.getElementById('vTitle').innerText = data.title || "فيديو جاهز";
                     
-                    document.getElementById('dlLink').onclick = (e) => {
+                    // الإصلاح القاتل للرابط الخطأ:
+                    const videoPath = data.hdplay || data.play;
+                    const finalUrl = videoPath.startsWith('http') ? videoPath : `https://www.tikwm.com${videoPath}`;
+                    
+                    document.getElementById('dlBtn').onclick = (e) => {
                         e.preventDefault();
-                        window.location.href = 'https://www.tikwm.com' + (data.hdplay || data.play);
+                        window.open(finalUrl, '_blank'); // سيفتح الرابط بشكل صحيح الآن
                     };
                     
                     resultArea.style.display = 'block';
-                    // تمرير الصفحة للأسفل لرؤية النتيجة
-                    resultArea.scrollIntoView({ behavior: 'smooth' });
                 } else {
-                    alert('لم نتمكن من العثور على الفيديو، تأكد من أن الرابط صحيح وعام.');
+                    alert('خطأ في جلب البيانات.');
                 }
             } catch (err) {
-                alert('حدث خطأ في الاتصال بالسيرفر، جرب مرة أخرى.');
+                alert('عطل في السيرفر.');
             } finally {
                 fetchBtn.innerText = 'تحميل';
-                fetchBtn.disabled = false;
             }
         };
     </script>
