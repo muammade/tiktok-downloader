@@ -4,86 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
-    <title>VideoSave Pro</title>
+    <title>VideoDownloader Pro | المحمل الاحترافي</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #FE2C55; --secondary: #25F4EE; --bg: #0f1013; }
+        :root { --main: #FE2C55; --accent: #25F4EE; --dark: #0a0b10; --card: #16181d; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
-        body { background: var(--bg); color: white; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-        header { width: 100%; padding: 20px; background: #1c1e22; text-align: center; border-bottom: 2px solid var(--primary); font-weight: 900; font-size: 1.5rem; }
-        .container { width: 95%; max-width: 600px; background: #1c1e22; margin-top: 30px; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; }
-        .input-group { display: flex; gap: 10px; margin: 20px 0; }
-        input { flex: 1; padding: 15px; border-radius: 10px; border: 1px solid #333; background: #000; color: white; outline: none; }
-        button { padding: 15px 25px; border-radius: 10px; border: none; background: var(--primary); color: white; font-weight: bold; cursor: pointer; }
-        #resultArea { display: none; margin-top: 25px; padding-top: 25px; border-top: 1px solid #333; }
-        #vCover { width: 100%; border-radius: 15px; border: 2px solid var(--secondary); margin-bottom: 15px; }
-        .dl-link { display: block; width: 100%; padding: 15px; background: var(--secondary); color: #000; text-decoration: none; font-weight: bold; border-radius: 10px; }
-        .ad-box { width: 100%; min-height: 100px; background: rgba(255,255,255,0.02); margin: 20px 0; border-radius: 10px; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+        
+        body { background: var(--dark); color: white; line-height: 1.6; }
+
+        /* رأس الموقع */
+        header {
+            background: #1c1e26; padding: 20px; text-align: center;
+            border-bottom: 3px solid var(--main); box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .logo { font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; color: white; }
+        .logo span { color: var(--main); }
+
+        .wrapper { display: flex; flex-direction: column; align-items: center; padding: 30px 15px; }
+
+        /* مساحة الإعلان العلوي */
+        .ad-top { width: 100%; max-width: 728px; margin-bottom: 30px; min-height: 90px; text-align: center; }
+
+        .main-card {
+            width: 100%; max-width: 600px; background: var(--card);
+            padding: 40px 25px; border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05); text-align: center;
+        }
+
+        .main-card h1 { font-size: 1.6rem; margin-bottom: 25px; color: #eee; }
+
+        .input-box { display: flex; gap: 0; margin-bottom: 20px; border-radius: 12px; overflow: hidden; border: 2px solid #333; }
+        input { flex: 1; padding: 18px; border: none; background: #000; color: white; font-size: 1rem; outline: none; text-align: right; }
+        input:focus { background: #050505; }
+        
+        .btn-fetch {
+            padding: 0 30px; border: none; background: var(--main); color: white;
+            font-weight: 700; cursor: pointer; transition: 0.3s;
+        }
+        .btn-fetch:hover { background: #e0244a; }
+
+        /* منطقة النتيجة */
+        #result { display: none; margin-top: 30px; animation: fadeInUp 0.5s ease; border-top: 1px solid #333; padding-top: 25px; }
+        #vImg { width: 100%; border-radius: 15px; border: 2px solid var(--accent); margin-bottom: 15px; max-height: 350px; object-fit: contain; }
+        .dl-confirm {
+            display: block; width: 100%; padding: 16px; background: var(--accent);
+            color: #000; text-decoration: none; font-weight: 800; border-radius: 12px;
+            font-size: 1.1rem; transition: 0.3s;
+        }
+        .dl-confirm:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 244, 238, 0.3); }
+
+        footer { margin-top: auto; padding: 30px; text-align: center; color: #444; font-size: 0.8rem; }
+        
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
-    <header>VIDEOSAVE <span>PRO</span></header>
+    <header><div class="logo">VIDEO<span>PRO</span></div></header>
 
-    <div class="ad-box">
-        <script async="async" data-cfasync="false" src="https://pl28334678.effectivegatecpm.com/f54e9c6f51b6bf561ffbceea1f602cc5/invoke.js"></script>
-        <div id="container-f54e9c6f51b6bf561ffbceea1f602cc5"></div>
-    </div>
-
-    <div class="container">
-        <h2>أسرع محمل فيديوهات</h2>
-        <div class="input-group">
-            <input type="text" id="urlInput" placeholder="ضع الرابط هنا...">
-            <button id="fetchBtn">تحميل</button>
+    <div class="wrapper">
+        <div class="ad-top">
+            <script async="async" data-cfasync="false" src="https://pl28334678.effectivegatecpm.com/f54e9c6f51b6bf561ffbceea1f602cc5/invoke.js"></script>
+            <div id="container-f54e9c6f51b6bf561ffbceea1f602cc5"></div>
         </div>
 
-        <div id="resultArea">
-            <img id="vCover" src="" alt="Video Preview">
-            <h3 id="vTitle" style="margin-bottom: 15px;"></h3>
-            <a href="#" id="dlBtn" class="dl-link">حفظ الفيديو الآن</a>
+        <div class="main-card">
+            <h1>تحميل الفيديو من جميع المنصات</h1>
+            <div class="input-box">
+                <input type="text" id="urlInp" placeholder="انسخ رابط الفيديو هنا...">
+                <button class="btn-fetch" id="getBtn">تحميل</button>
+            </div>
+
+            <div id="result">
+                <img id="vImg" src="" alt="Video Preview">
+                <p id="vTitle" style="margin-bottom: 15px; font-weight: bold;"></p>
+                <a href="#" id="finalDl" class="dl-confirm">حفظ الفيديو إلى الجهاز</a>
+            </div>
         </div>
     </div>
 
-    <div class="ad-box" style="margin-top: 40px;">
-        <div id="container-f54e9c6f51b6bf561ffbceea1f602cc5-2"></div>
-    </div>
+    <footer>&copy; 2025 VideoPro Downloader - الاحترافية في التحميل</footer>
 
     <script>
-        const fetchBtn = document.getElementById('fetchBtn');
-        const urlInput = document.getElementById('urlInput');
-        const resultArea = document.getElementById('resultArea');
+        const getBtn = document.getElementById('getBtn');
+        const urlInp = document.getElementById('urlInp');
+        const result = document.getElementById('result');
 
-        fetchBtn.onclick = async () => {
-            const url = urlInput.value.trim();
-            if (!url) return alert('أدخل الرابط!');
+        getBtn.onclick = async () => {
+            const url = urlInp.value.trim();
+            if(!url) return alert('يرجى وضع الرابط');
 
-            fetchBtn.innerText = 'جاري المعالجة...';
+            getBtn.innerText = 'جاري المعالجة...';
+            getBtn.disabled = true;
+
             try {
-                const response = await fetch(`/api/download?url=${encodeURIComponent(url)}`);
-                const result = await response.json();
+                const r = await fetch(`/api/download?url=${encodeURIComponent(url)}`);
+                const j = await r.json();
 
-                if (result.code === 0) {
-                    const data = result.data;
-                    document.getElementById('vCover').src = data.cover;
-                    document.getElementById('vTitle').innerText = data.title || "فيديو جاهز";
+                if(j.code === 0) {
+                    const d = j.data;
+                    document.getElementById('vImg').src = d.cover;
+                    document.getElementById('vTitle').innerText = d.title || "تم العثور على الفيديو";
                     
-                    // الإصلاح القاتل للرابط الخطأ:
-                    const videoPath = data.hdplay || data.play;
-                    const finalUrl = videoPath.startsWith('http') ? videoPath : `https://www.tikwm.com${videoPath}`;
+                    const videoLink = d.hdplay || d.play;
+                    const finalUrl = videoLink.startsWith('http') ? videoLink : `https://www.tikwm.com${videoLink}`;
                     
-                    document.getElementById('dlBtn').onclick = (e) => {
+                    document.getElementById('finalDl').onclick = (e) => {
                         e.preventDefault();
-                        window.open(finalUrl, '_blank'); // سيفتح الرابط بشكل صحيح الآن
+                        window.open(finalUrl, '_blank');
                     };
                     
-                    resultArea.style.display = 'block';
+                    result.style.display = 'block';
                 } else {
-                    alert('خطأ في جلب البيانات.');
+                    alert('عذراً، لم نتمكن من الوصول للفيديو. تأكد من أن الحساب عام وليس خاصاً.');
                 }
-            } catch (err) {
-                alert('عطل في السيرفر.');
+            } catch(e) {
+                alert('حدث خطأ في الخادم.');
             } finally {
-                fetchBtn.innerText = 'تحميل';
+                getBtn.innerText = 'تحميل';
+                getBtn.disabled = false;
             }
         };
     </script>
