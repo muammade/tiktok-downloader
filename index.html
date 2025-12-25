@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محمل فيديوهات تيك توك الذكي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        glass: 'rgba(255, 255, 255, 0.25)',
+                        'glass-border': 'rgba(255, 255, 255, 0.5)',
+                        'glass-text': 'rgba(255, 255, 255, 0.9)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            /* Soft pastel gradient: Cyan/Blue to Purple */
+            background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 50%, #e0e7ff 100%);
+            /* Or clearer match: light blue to light purple */
+            background: linear-gradient(120deg, #d4fc79 0%, #96e6a1 0%, #a8c0ff 0%, #d9afd9 100%);
+            /* Too chaotic */
+            background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+            /* Soft Purple to Blue */
+            min-height: 100vh;
+        }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.45);
+        }
+
+        .ad-card {
+            background: rgba(255, 255, 255, 0.6);
+            border: none;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Pill inputs */
+        .input-pill {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body class="font-sans text-gray-800 flex flex-col items-center justify-center p-4 min-h-screen">
+
+    <!-- Main Container -->
+    <main class="w-full max-w-lg main-card rounded-[40px] p-6 md:p-10 text-center relative overflow-hidden">
+
+        <!-- Top Nav (Menu / Login dummy) -->
+        <div class="flex justify-between items-center mb-8 opacity-70">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <span class="font-semibold text-sm cursor-pointer">تسجيل الدخول</span>
+        </div>
+
+        <!-- Header -->
+        <h1 class="text-3xl md:text-4xl font-black mb-2 text-gray-800 tracking-wide">
+            محمل فيديوهات تيك توك
+        </h1>
+        <p class="text-gray-600 mb-8 font-medium opacity-80">تحميل سهل، سريع، وبجودة عالية</p>
+
+        <!-- Ad Space Top (Styled as white block) -->
+        <div class="ad-card w-full h-16 rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+            <span class="text-sm font-bold text-gray-400">مساحة إعلانية</span>
+        </div>
+
+        <!-- Input Section (Row Layout) -->
+        <div class="flex flex-col md:flex-row gap-3 mb-8">
+            <div class="relative flex-grow">
+                <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                    </svg>
+                </div>
+                <!-- Pill Input -->
+                <input type="text" id="urlInput" placeholder="الصق الرابط هنا..."
+                    class="w-full py-3.5 pr-12 pl-4 text-gray-700 rounded-full input-pill focus:outline-none focus:ring-2 focus:ring-purple-300">
+            </div>
+
+            <!-- Download Button (Pill Gradient) -->
+            <button id="downloadBtn" onclick="handleDownload()"
+                class="md:w-32 bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-500 hover:to-teal-600 text-white font-bold py-3.5 px-6 rounded-full shadow-lg transform transition active:scale-95 flex items-center justify-center">
+                تحميل
+            </button>
+        </div>
+
+        <!-- Features Section (Cards) -->
+        <div class="grid grid-cols-3 gap-3 mb-8">
+            <!-- Feature 1 -->
+            <div class="feature-card p-3 rounded-2xl flex flex-col items-center justify-center aspect-square">
+                <div class="text-gray-700 mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 opacity-70" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                    </svg>
+                </div>
+                <span class="text-xs md:text-sm font-bold text-gray-700">بلا علامة</span>
+            </div>
+            <!-- Feature 2 -->
+            <div class="feature-card p-3 rounded-2xl flex flex-col items-center justify-center aspect-square">
+                <div class="text-gray-700 mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 opacity-70" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <span class="text-xs md:text-sm font-bold text-gray-700">جودة HD</span>
+            </div>
+            <!-- Feature 3 -->
+            <div class="feature-card p-3 rounded-2xl flex flex-col items-center justify-center aspect-square">
+                <div class="text-gray-700 mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 opacity-70" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <span class="text-xs md:text-sm font-bold text-gray-700">سريع جداً</span>
+            </div>
+        </div>
+
+        <!-- Ad Space Bottom (Large White Card) -->
+        <div class="ad-card w-full h-32 rounded-3xl flex items-center justify-center shadow-inner">
+            <span class="text-lg font-bold text-gray-400">مساحة إعلانية</span>
+        </div>
+
+        <div class="mt-6 flex justify-between text-xs text-gray-500 opacity-60 px-4">
+            <span>سياسة الخصوصية</span>
+            <span>اتصل بنا</span>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
