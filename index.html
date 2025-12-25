@@ -3,69 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="referrer" content="no-referrer"> <title>Ultimate Downloader HD</title>
+    <meta name="referrer" content="no-referrer">
+    <title>Ultimate Video Downloader | المحمل الذكي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --p: #ff0050; --s: #00f2ea; --b: #0a0a0a; }
-        body { background: var(--b); color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
-        .card { background: #1a1a1a; padding: 30px; border-radius: 20px; width: 100%; max-width: 500px; text-align: center; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        input { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #444; background: #000; color: white; margin-bottom: 20px; outline: none; }
-        input:focus { border-color: var(--s); }
-        button { width: 100%; padding: 15px; border-radius: 10px; border: none; background: var(--p); color: white; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        button:hover { opacity: 0.8; transform: scale(1.02); }
-        #res { display: none; margin-top: 25px; animation: fadeIn 0.5s; }
-        img { width: 100%; border-radius: 12px; margin-bottom: 15px; border: 2px solid var(--s); display: block; }
-        .dl-btn { display: block; background: var(--s); color: black; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; margin-top: 10px; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        :root { --primary: #FF0050; --secondary: #00F2EA; --bg: #0b0b0d; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        body {
+            background-color: var(--bg);
+            background-image: radial-gradient(circle at 50% -20%, #2c2c2c, #0b0b0d);
+            color: #fff; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 20px;
+        }
+        .container {
+            width: 100%; max-width: 600px; background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 30px;
+            padding: 40px 20px; text-align: center; margin-top: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; background: linear-gradient(to left, var(--secondary), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .input-group { margin: 25px 0; }
+        input {
+            width: 100%; padding: 18px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.4); color: #fff; font-size: 1rem; outline: none; transition: 0.3s; text-align: center;
+        }
+        input:focus { border-color: var(--secondary); box-shadow: 0 0 15px rgba(0, 242, 234, 0.2); }
+        .btn-main {
+            width: 100%; padding: 18px; border-radius: 15px; border: none;
+            background: linear-gradient(45deg, var(--primary), #ff4d79);
+            color: #fff; font-weight: bold; font-size: 1.2rem; cursor: pointer; transition: 0.3s;
+        }
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 0, 80, 0.5); }
+        
+        #resultArea { margin-top: 30px; display: none; animation: fadeIn 0.6s ease; }
+        .result-card { background: rgba(255,255,255,0.03); border-radius: 20px; padding: 20px; border: 1px solid rgba(255,255,255,0.1); }
+        #vCover { width: 100%; border-radius: 15px; margin-bottom: 15px; max-height: 300px; object-fit: contain; border: 2px solid var(--secondary); }
+        .btn-download {
+            display: block; width: 100%; padding: 15px; border-radius: 12px;
+            background: var(--secondary); color: #000; text-decoration: none; font-weight: bold; font-size: 1.1rem;
+        }
+        .ad-slot { width: 100%; max-width: 600px; margin: 20px 0; border-radius: 15px; overflow: hidden; min-height: 100px; background: rgba(255,255,255,0.02); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h2 style="margin-bottom: 10px; color: var(--s);">Ultimate Downloader</h2>
-        <p style="font-size: 0.8rem; color: #888; margin-bottom: 20px;">يدعم تيك توك، فيسبوك، وإنستجرام</p>
-        
-        <input type="text" id="url" placeholder="ضع الرابط هنا...">
-        <button id="btn">تحميل بأعلى جودة HD</button>
+    <div class="ad-slot">
+        <script async="async" data-cfasync="false" src="https://pl28334678.effectivegatecpm.com/f54e9c6f51b6bf561ffbceea1f602cc5/invoke.js"></script>
+        <div id="container-f54e9c6f51b6bf561ffbceea1f602cc5"></div>
+    </div>
 
-        <div id="res">
-            <img id="cover" src="" alt="Video Preview">
-            <p id="title" style="margin-bottom: 15px; font-weight: bold;"></p>
-            <a href="#" id="link" class="dl-btn">حفظ الفيديو للجهاز</a>
+    <div class="container">
+        <h1>Downloader Pro</h1>
+        <p style="color: #888;">تحميل عالي الجودة من تيك توك وفيسبوك</p>
+
+        <div class="input-group">
+            <input type="text" id="urlInput" placeholder="ضع الرابط هنا (TikTok, FB, IG)...">
+        </div>
+
+        <button class="btn-main" id="startBtn">جاري فحص الرابط...</button>
+
+        <div id="resultArea">
+            <div class="result-card">
+                <img id="vCover" src="" alt="Video Preview">
+                <div id="vTitle" style="margin-bottom: 15px; font-weight: bold; color: var(--secondary);"></div>
+                <a href="#" id="finalBtn" class="btn-download">حفظ الفيديو HD</a>
+            </div>
         </div>
     </div>
 
+    <div class="ad-slot">
+        <div id="container-f54e9c6f51b6bf561ffbceea1f602cc5-2"></div>
+    </div>
+
     <script>
-        document.getElementById('btn').onclick = async () => {
-            const val = document.getElementById('url').value;
-            if(!val) return;
-            document.getElementById('btn').innerText = 'جاري المعالجة...';
+        const startBtn = document.getElementById('startBtn');
+        const urlInput = document.getElementById('urlInput');
+        const resultArea = document.getElementById('resultArea');
+        
+        startBtn.innerText = 'تحميل الآن';
 
+        startBtn.onclick = async () => {
+            const url = urlInput.value.trim();
+            if (!url) return alert('ضع رابطاً أولاً!');
+
+            startBtn.innerText = 'جاري المعالجة...';
             try {
-                const r = await fetch(`/api/download?url=${encodeURIComponent(val)}`);
-                const j = await r.json();
+                const res = await fetch(`/api/download?url=${encodeURIComponent(url)}`);
+                const result = await res.json();
 
-                if(j.code === 0) {
-                    // نختار جودة HD إذا توفرت، وإلا الجودة العادية
-                    const videoPath = j.data.hdplay || j.data.play;
+                if (result.code === 0) {
+                    const data = result.data;
+                    document.getElementById('vCover').src = data.cover;
+                    document.getElementById('vTitle').innerText = data.title || "فيديو جاهز";
                     
-                    // تحديث العناصر
-                    document.getElementById('cover').src = j.data.cover;
-                    document.getElementById('title').innerText = j.data.title || "فيديو جاهز";
-                    
-                    document.getElementById('link').onclick = (e) => {
+                    document.getElementById('finalBtn').onclick = (e) => {
                         e.preventDefault();
-                        // التحويل للرابط المباشر
-                        window.location.href = 'https://www.tikwm.com' + videoPath;
+                        window.location.href = 'https://www.tikwm.com' + (data.hdplay || data.play);
                     };
                     
-                    document.getElementById('res').style.display = 'block';
+                    resultArea.style.display = 'block';
                 } else {
-                    alert("المعذرة، الرابط غير مدعوم أو خاص.");
+                    alert('عذراً، الرابط غير مدعوم أو أن السيرفر مشغول.');
                 }
-            } catch(e) {
-                alert("خطأ في الاتصال بالسيرفر.");
+            } catch (err) {
+                alert('خطأ في الاتصال بالخادم.');
             } finally {
-                document.getElementById('btn').innerText = 'تحميل بأعلى جودة HD';
+                startBtn.innerText = 'تحميل الآن';
             }
         };
     </script>
